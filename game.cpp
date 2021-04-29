@@ -6,7 +6,7 @@
 #include <stack>
 #include <stdlib.h>
 using namespace std  ;
-
+//Oussama Kordoghli
 Game::Game(){}
 Game::~Game(){}
 bool Game::test(stack<Carte> S,Carte C)
