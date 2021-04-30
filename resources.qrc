@@ -53,6 +53,13 @@
 		<file>images/1d.gif</file>
 		<file>images/1c.gif</file>
 		<file>images/empty.gif</file>
+		<file>images/background.jpg</file>
+		<file>images/background1.jpg</file>
+		<file>images/background2.jpg</file>
+		<file>images/background3.jpg</file>
+		<file>images/background4.jpg</file>
+
+		
 		
 
     </qresource>

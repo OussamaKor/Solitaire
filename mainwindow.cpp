@@ -17,9 +17,10 @@ using namespace std  ;
 MainWindow::MainWindow(QWidget *parent,stack<Carte> S,stack<Carte> S1): QMainWindow(parent=nullptr), ui (new Ui::MainWindow),T(S1),P(S)
 {
     ui->setupUi(this);
-    //Ch = ui->textEdit->toPlainText() ;
-    //ui->cartejoueur1->setText(ui->cartejoueur1->text()+ "")
-    //ui->cartejoueur1->setPixmap(QPixmap(":/images/Jd.gif"));//kif bish n7ot kaaba barka nekteb ken star hedha
+    //Ch = ui->longuer->toPlainText() ;
+    //Ch1 = ui->largeur->toPlainTaxt() ;
+    //ui->colonne1->setText(ui->colonne1->text()+ "")
+    //ui->colonne1->setPixmap(QPixmap(":/images/Jd.gif"));//kif bish n7ot kaaba barka nekteb ken star hedha
     //const QPixmap* pixmap1 = ui->cartejoueur1->pixmap(); --> yjiib le9dim lkoll
    /*QPixmap *pixmap=new QPixmap(71, 96*(i));
     //tosna3 les dim mtal war9aa
@@ -49,31 +50,21 @@ void MainWindow::on_Commencer_clicked()
       ui->pioch->setPixmap(QPixmap(":/images/empty.gif")) ;
       Carte C1 ;
       C1=T.getColonne(0).top() ;
-      Carte::Formes F;
-      Carte::Valeurs V;
-      F=C1.getForme() ;
-      V=C1.getValeur() ;
       Affiche_cartes1(C1,1,1) ;
       //ui->colonne1->setText('('+QString::number(V)+','+QString::number(F) + ')') ;
       Carte C2 ;
       C2=T.getColonne(1).top() ;
-      F=C2.getForme() ;
-      V=C2.getValeur() ;
       Affiche_empty(2,1) ;
       Affiche_cartes1(C2,2,2) ;
       //ui->colonne2->setText("\n (" +QString::number(V)+","+QString::number(F) + ")") ;
       Carte C3 ;
       C3=T.getColonne(2).top() ;
-      F=C3.getForme() ;
-      V=C3.getValeur() ;
       Affiche_empty(3,1) ;
       Affiche_empty(3,2) ;
       Affiche_cartes1(C3,3,3) ;
       //ui->colonne3->setText("\n \n ("+QString::number(V)+','+QString::number(F) + ')') ;
       Carte C4 ;
       C4=T.getColonne(3).top() ;
-      F=C4.getForme() ;
-      V=C4.getValeur() ;
       Affiche_empty(4,1) ;
       Affiche_empty(4,2) ;
       Affiche_empty(4,3) ;
@@ -81,8 +72,6 @@ void MainWindow::on_Commencer_clicked()
       //ui->colonne4->setText("\n \n \n ( "+QString::number(V)+','+QString::number(F) + ')') ;
       Carte C5 ;
       C5=T.getColonne(4).top() ;
-      F=C5.getForme() ;
-      V=C5.getValeur() ;
       Affiche_empty(5,1) ;
       Affiche_empty(5,2) ;
       Affiche_empty(5,3) ;
@@ -91,8 +80,6 @@ void MainWindow::on_Commencer_clicked()
       //ui->colonne5->setText("\n \n \n \n ( "+QString::number(V)+','+QString::number(F) + ')') ;
       Carte C6 ;
       C6=T.getColonne(5).top() ;
-      F=C6.getForme() ;
-      V=C6.getValeur() ;
       Affiche_empty(6,1) ;
       Affiche_empty(6,2) ;
       Affiche_empty(6,3) ;
@@ -102,8 +89,6 @@ void MainWindow::on_Commencer_clicked()
       //ui->colonne6->setText("\n \n \n \n \n ( "+QString::number(V)+','+QString::number(F) + ')') ;
       Carte C7 ;
       C7=T.getColonne(6).top() ;
-      F=C7.getForme() ;
-      V=C7.getValeur() ;
       Affiche_empty(7,1) ;
       Affiche_empty(7,2) ;
       Affiche_empty(7,3) ;
@@ -129,10 +114,6 @@ void MainWindow::on_pioche_clicked()
         P.Melanger(C1) ;
         C1=P.Retourner_Carte() ;
         P.Ajouter_Carte(C1) ;
-        Carte::Formes F;
-        Carte::Valeurs V;
-        F=C1.getForme() ;
-        V=C1.getValeur() ;
         Affiche_cartes(C1,0) ;
         //ui->pioche->setText('('+QString::number(V)+','+QString::number(F) + ')') ;
 
@@ -142,10 +123,6 @@ void MainWindow::on_pioche_clicked()
         Carte C1 ;
         C1=P.Retourner_Carte() ;
         P.Ajouter_Carte(C1) ;
-        Carte::Formes F;
-        Carte::Valeurs V;
-        F=C1.getForme() ;
-        V=C1.getValeur() ;
         Affiche_cartes(C1,0) ;
         //ui->pioche->setText('('+QString::number(V)+','+QString::number(F) + ')') ;
 
@@ -200,8 +177,6 @@ void MainWindow::on_Accepte_clicked()
                     B++ ;
                     Carte::Formes F;
                     Carte::Valeurs V;
-                    F=S5.top().getForme() ;
-                    V=S5.top().getValeur() ;
                     Affiche_cartes1(S5.top(),1,B) ;
                     //ui->colonne1->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                     S5.pop() ;
@@ -210,10 +185,6 @@ void MainWindow::on_Accepte_clicked()
             case 2:
             {
                 B++ ;
-                Carte::Formes F;
-                Carte::Valeurs V;
-                F=S5.top().getForme() ;
-                V=S5.top().getValeur() ;
                 Affiche_cartes1(S5.top(),2,B) ;
                 //ui->colonne2->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                 S5.pop() ;
@@ -222,10 +193,6 @@ void MainWindow::on_Accepte_clicked()
             case 3:
             {
                 B++ ;
-                Carte::Formes F;
-                Carte::Valeurs V;
-                F=S5.top().getForme() ;
-                V=S5.top().getValeur() ;
                 Affiche_cartes1(S5.top(),3,B) ;
                 //ui->colonne3->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                 S5.pop() ;
@@ -234,10 +201,6 @@ void MainWindow::on_Accepte_clicked()
             case 4:
             {
                 B++ ;
-                Carte::Formes F;
-                Carte::Valeurs V;
-                F=S5.top().getForme() ;
-                V=S5.top().getValeur() ;
                 Affiche_cartes1(S5.top(),4,B) ;
                 //ui->colonne4->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                 S5.pop() ;
@@ -246,10 +209,6 @@ void MainWindow::on_Accepte_clicked()
             case 5:
             {
                 B++ ;
-                Carte::Formes F;
-                Carte::Valeurs V;
-                F=S5.top().getForme() ;
-                V=S5.top().getValeur() ;
                 Affiche_cartes1(S5.top(),5,B) ;
                 //ui->colonne5->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                 S5.pop() ;
@@ -258,10 +217,6 @@ void MainWindow::on_Accepte_clicked()
             case 6:
             {
                 B++ ;
-                Carte::Formes F;
-                Carte::Valeurs V;
-                F=S5.top().getForme() ;
-                V=S5.top().getValeur() ;
                 Affiche_cartes1(S5.top(),6,B) ;
                 //ui->colonne6->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                 S5.pop() ;
@@ -270,10 +225,6 @@ void MainWindow::on_Accepte_clicked()
             case 7:
             {
                 B++ ;
-                Carte::Formes F;
-                Carte::Valeurs V;
-                F=S5.top().getForme() ;
-                V=S5.top().getValeur() ;
                 Affiche_cartes1(S5.top(),7,B) ;
                 //ui->colonne7->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                 S5.pop() ;
@@ -294,10 +245,6 @@ void MainWindow::on_Accepte_clicked()
                     {                        
                         Carte C1 ;
                         C1=T.getColonne(0).top() ;
-                        Carte::Formes F;
-                        Carte::Valeurs V;
-                        F=C1.getForme() ;
-                        V=C1.getValeur() ;
                         int J ;
                         J=T.getColonne(0).size() ;
                         //ui->colonne1->setText("\n")   ;
@@ -314,10 +261,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(1).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(1).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -334,10 +277,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(2).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(2).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -354,10 +293,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(3).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(3).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -374,10 +309,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(4).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(4).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -394,10 +325,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(5).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(5).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -414,10 +341,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(6).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(6).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -497,10 +420,6 @@ void MainWindow::on_Accepte_clicked()
                   case 1:
                   {
                       B++ ;
-                      Carte::Formes F;
-                      Carte::Valeurs V;
-                      F=S5.top().getForme() ;
-                      V=S5.top().getValeur() ;
                       Affiche_cartes1(S5.top(),1,B) ;
                       //ui->colonne1->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                       S5.pop() ;
@@ -509,10 +428,6 @@ void MainWindow::on_Accepte_clicked()
               case 2:
               {
                   B++ ;
-                  Carte::Formes F;
-                  Carte::Valeurs V;
-                  F=S5.top().getForme() ;
-                  V=S5.top().getValeur() ;
                   Affiche_cartes1(S5.top(),2,B) ;
                   //ui->colonne2->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                   S5.pop() ;
@@ -521,10 +436,6 @@ void MainWindow::on_Accepte_clicked()
               case 3:
               {
                   B++ ;
-                  Carte::Formes F;
-                  Carte::Valeurs V;
-                  F=S5.top().getForme() ;
-                  V=S5.top().getValeur() ;
                   Affiche_cartes1(S5.top(),3,B) ;
                   //ui->colonne3->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                   S5.pop() ;
@@ -533,10 +444,6 @@ void MainWindow::on_Accepte_clicked()
               case 4:
               {
                   B++ ;
-                  Carte::Formes F;
-                  Carte::Valeurs V;
-                  F=S5.top().getForme() ;
-                  V=S5.top().getValeur() ;
                   Affiche_cartes1(S5.top(),4,B) ;
                   //ui->colonne4->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                   S5.pop() ;
@@ -545,10 +452,6 @@ void MainWindow::on_Accepte_clicked()
               case 5:
               {
                   B++ ;
-                  Carte::Formes F;
-                  Carte::Valeurs V;
-                  F=S5.top().getForme() ;
-                  V=S5.top().getValeur() ;
                   Affiche_cartes1(S5.top(),5,B) ;
                   //ui->colonne5->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                   S5.pop() ;
@@ -557,10 +460,6 @@ void MainWindow::on_Accepte_clicked()
               case 6:
               {
                   B++ ;
-                  Carte::Formes F;
-                  Carte::Valeurs V;
-                  F=S5.top().getForme() ;
-                  V=S5.top().getValeur() ;
                   Affiche_cartes1(S5.top(),6,B) ;
                   //ui->colonne6->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                   S5.pop() ;
@@ -569,10 +468,6 @@ void MainWindow::on_Accepte_clicked()
               case 7:
               {
                   B++ ;
-                  Carte::Formes F;
-                  Carte::Valeurs V;
-                  F=S5.top().getForme() ;
-                  V=S5.top().getValeur() ;
                   Affiche_cartes1(S5.top(),7,B) ;
                   //ui->colonne7->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
                   S5.pop() ;
@@ -592,10 +487,6 @@ void MainWindow::on_Accepte_clicked()
                     {
                         Carte C1 ;
                         C1=T.getColonne(0).top() ;
-                        Carte::Formes F;
-                        Carte::Valeurs V;
-                        F=C1.getForme() ;
-                        V=C1.getValeur() ;
                         int J ;
                         J=T.getColonne(0).size() ;
                         //ui->colonne1->setText("\n")   ;
@@ -612,10 +503,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(1).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(1).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -632,10 +519,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(2).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(2).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -652,10 +535,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(3).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(3).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -672,10 +551,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(4).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(4).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -692,10 +567,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(5).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(5).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -712,10 +583,6 @@ void MainWindow::on_Accepte_clicked()
                 {
                     Carte C1 ;
                     C1=T.getColonne(6).top() ;
-                    Carte::Formes F;
-                    Carte::Valeurs V;
-                    F=C1.getForme() ;
-                    V=C1.getValeur() ;
                     int J ;
                     J=T.getColonne(6).size() ;
                     //ui->colonne1->setText("\n")   ;
@@ -798,11 +665,7 @@ void MainWindow::on_Accepte_clicked()
                                             switch (numd)
                                                 {
                                                     case 1:
-                                                    {
-                                                        Carte::Formes F;
-                                                        Carte::Valeurs V;
-                                                        F=P.getPioche().top().getForme() ;
-                                                        V=P.getPioche().top().getValeur() ;
+                                                    {                                                        
                                                         int B = T.getColonne(numd-1).size() ;
                                                         Affiche_cartes1(P.getPioche().top(),1,B) ;
                                                         //ui->colonne1->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -810,10 +673,6 @@ void MainWindow::on_Accepte_clicked()
                                                     }
                                                 case 2:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),2,B) ;
                                                     //ui->colonne2->setText(ui->colonne2->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -821,10 +680,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 3:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),3,B) ;
                                                     //ui->colonne3->setText(ui->colonne3->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -832,10 +687,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 4:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),4,B) ;
                                                     //ui->colonne4->setText(ui->colonne4->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -843,10 +694,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 5:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),5,B) ;
                                                     //ui->colonne5->setText(ui->colonne5->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -854,10 +701,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 6:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),6,B) ;
                                                     //ui->colonne6->setText(ui->colonne6->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -865,10 +708,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 7:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),7,B) ;
                                                     //ui->colonne7->setText(ui->colonne7->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -892,10 +731,6 @@ void MainWindow::on_Accepte_clicked()
                                                 {
                                                     case 1:
                                                     {
-                                                        Carte::Formes F;
-                                                        Carte::Valeurs V;
-                                                        F=P.getPioche().top().getForme() ;
-                                                        V=P.getPioche().top().getValeur() ;
                                                         int B = T.getColonne(numd-1).size() ;
                                                         Affiche_cartes1(P.getPioche().top(),1,B) ;
                                                         //ui->colonne1->setText(ui->colonne1->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -903,10 +738,6 @@ void MainWindow::on_Accepte_clicked()
                                                     }
                                                 case 2:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),2,B) ;
                                                     //ui->colonne2->setText(ui->colonne2->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -914,10 +745,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 3:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),3,B) ;
                                                     //ui->colonne3->setText(ui->colonne3->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -925,10 +752,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 4:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),4,B) ;
                                                     //ui->colonne4->setText(ui->colonne4->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -936,10 +759,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 5:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),5,B) ;
                                                     //ui->colonne5->setText(ui->colonne5->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -947,10 +766,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 6:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),6,B) ;
                                                     //ui->colonne6->setText(ui->colonne6->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -958,10 +773,6 @@ void MainWindow::on_Accepte_clicked()
                                                 }
                                                 case 7:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=P.getPioche().top().getForme() ;
-                                                    V=P.getPioche().top().getValeur() ;
                                                     int B = T.getColonne(numd-1).size() ;
                                                     Affiche_cartes1(P.getPioche().top(),7,B) ;
                                                     //ui->colonne7->setText(ui->colonne7->text()+"\n ("+QString::number(V)+','+QString::number(F) + ')') ;
@@ -990,40 +801,24 @@ void MainWindow::on_Accepte_clicked()
                                     {
                                         case 11:
                                         {
-                                            Carte::Formes F;
-                                            Carte::Valeurs V;
-                                            F=P.getPioche().top().getForme() ;
-                                            V=P.getPioche().top().getValeur() ;
                                             Affiche_cartes(P.getPioche().top(),numd) ;
                                             //ui->pile11->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                             break ;
                                         }
                                     case 12:
                                     {
-                                        Carte::Formes F;
-                                        Carte::Valeurs V;
-                                        F=P.getPioche().top().getForme() ;
-                                        V=P.getPioche().top().getValeur() ;
                                         Affiche_cartes(P.getPioche().top(),numd) ;
                                         //ui->pile12->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                         break ;
                                     }
                                     case 13:
                                     {
-                                        Carte::Formes F;
-                                        Carte::Valeurs V;
-                                        F=P.getPioche().top().getForme() ;
-                                        V=P.getPioche().top().getValeur() ;
                                         Affiche_cartes(P.getPioche().top(),numd) ;
                                         //ui->pile13->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                         break ;
                                     }
                                     case 14:
                                     {
-                                        Carte::Formes F;
-                                        Carte::Valeurs V;
-                                        F=P.getPioche().top().getForme() ;
-                                        V=P.getPioche().top().getValeur() ;
                                         Affiche_cartes(P.getPioche().top(),numd) ;
                                         //ui->pile14->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                         break ;
@@ -1042,40 +837,24 @@ void MainWindow::on_Accepte_clicked()
                                     {
                                         case 11:
                                         {
-                                            Carte::Formes F;
-                                            Carte::Valeurs V;
-                                            F=P.getPioche().top().getForme() ;
-                                            V=P.getPioche().top().getValeur() ;
                                             Affiche_cartes(P.getPioche().top(),numd) ;
                                             //ui->pile11->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                             break ;
                                         }
                                     case 12:
                                     {
-                                        Carte::Formes F;
-                                        Carte::Valeurs V;
-                                        F=P.getPioche().top().getForme() ;
-                                        V=P.getPioche().top().getValeur() ;
                                         Affiche_cartes(P.getPioche().top(),numd) ;
                                         //ui->pile12->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                         break ;
                                     }
                                     case 13:
                                     {
-                                        Carte::Formes F;
-                                        Carte::Valeurs V;
-                                        F=P.getPioche().top().getForme() ;
-                                        V=P.getPioche().top().getValeur() ;
                                         Affiche_cartes(P.getPioche().top(),numd) ;
                                         //ui->pile13->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                         break ;
                                     }
                                     case 14:
                                     {
-                                        Carte::Formes F;
-                                        Carte::Valeurs V;
-                                        F=P.getPioche().top().getForme() ;
-                                        V=P.getPioche().top().getValeur() ;
                                         Affiche_cartes(P.getPioche().top(),numd) ;
                                         //ui->pile14->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                         break ;
@@ -1110,40 +889,24 @@ void MainWindow::on_Accepte_clicked()
                                              {
                                                  case 11:
                                                  {
-                                                     Carte::Formes F;
-                                                     Carte::Valeurs V;
-                                                     F=CP.getForme() ;
-                                                     V=CP.getValeur() ;
                                                      Affiche_cartes(CP,11) ;
                                                      //ui->pile11->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                                      break ;
                                                  }
                                              case 12:
                                              {
-                                                 Carte::Formes F;
-                                                 Carte::Valeurs V;
-                                                 F=CP.getForme() ;
-                                                 V=CP.getValeur() ;
                                                  Affiche_cartes(CP,12) ;
                                                  //ui->pile12->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                                  break ;
                                              }
                                              case 13:
                                              {
-                                                 Carte::Formes F;
-                                                 Carte::Valeurs V;
-                                                 F=CP.getForme() ;
-                                                 V=CP.getValeur() ;
                                                  Affiche_cartes(CP,13) ;
                                                  //ui->pile13->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                                  break ;
                                              }
                                              case 14:
                                              {
-                                                 Carte::Formes F;
-                                                 Carte::Valeurs V;
-                                                 F=CP.getForme() ;
-                                                 V=CP.getValeur() ;
                                                  Affiche_cartes(CP,14) ;
                                                  //ui->pile14->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                                  break ;
@@ -1333,40 +1096,24 @@ void MainWindow::on_Accepte_clicked()
                                                 {
                                                     case 11:
                                                     {
-                                                        Carte::Formes F;
-                                                        Carte::Valeurs V;
-                                                        F=CP.getForme() ;
-                                                        V=CP.getValeur() ;
                                                         Affiche_cartes(CP,11) ;
                                                         //ui->pile11->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                                         break ;
                                                     }
                                                 case 12:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=CP.getForme() ;
-                                                    V=CP.getValeur() ;
                                                     Affiche_cartes(CP,12) ;
                                                     //ui->pile12->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                                     break ;
                                                 }
                                                 case 13:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=CP.getForme() ;
-                                                    V=CP.getValeur() ;
                                                     Affiche_cartes(CP,13) ;
                                                     //ui->pile13->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                                     break ;
                                                 }
                                                 case 14:
                                                 {
-                                                    Carte::Formes F;
-                                                    Carte::Valeurs V;
-                                                    F=CP.getForme() ;
-                                                    V=CP.getValeur() ;
                                                     Affiche_cartes(CP,14) ;
                                                     //ui->pile14->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                                     break ;
@@ -1564,10 +1311,6 @@ void MainWindow::on_Accepte_clicked()
                             {
                                 Carte C1 ;
                                 C1=T.getColonne(0).top() ;
-                                Carte::Formes F;
-                                Carte::Valeurs V;
-                                F=C1.getForme() ;
-                                V=C1.getValeur() ;
                                 int J ;
                                 J=T.getColonne(0).size() ;
                                 //ui->colonne1->setText("\n")   ;
@@ -1584,10 +1327,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(1).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(1).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1604,10 +1343,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(2).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(2).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1624,10 +1359,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(3).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(3).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1644,10 +1375,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(4).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(4).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1664,10 +1391,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(5).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(5).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1684,10 +1407,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(6).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(6).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1708,40 +1427,24 @@ void MainWindow::on_Accepte_clicked()
                             {
                                 case 11:
                                 {
-                                    Carte::Formes F;
-                                    Carte::Valeurs V;
-                                    F=PC.getPile(0).top().getForme() ;
-                                    V=PC.getPile(0).top().getValeur() ;
                                     Affiche_cartes(PC.getPile(0).top(),11) ;
                                     //ui->pile11->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                     break ;
                                 }
                             case 12:
                             {
-                                Carte::Formes F;
-                                Carte::Valeurs V;
-                                F=PC.getPile(1).top().getForme() ;
-                                V=PC.getPile(1).top().getValeur() ;
                                 Affiche_cartes(PC.getPile(1).top(),12) ;
                                 //ui->pile12->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                 break ;
                             }
                             case 13:
                             {
-                                Carte::Formes F;
-                                Carte::Valeurs V;
-                                F=PC.getPile(2).top().getForme() ;
-                                V=PC.getPile(2).top().getValeur() ;
                                 Affiche_cartes(PC.getPile(2).top(),13) ;
                                 //ui->pile13->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                 break ;
                             }
                             case 14:
                             {
-                                Carte::Formes F;
-                                Carte::Valeurs V;
-                                F=PC.getPile(3).top().getForme() ;
-                                V=PC.getPile(3).top().getValeur() ;
                                 Affiche_cartes(PC.getPile(3).top(),13) ;
                                 //ui->pile14->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                 break ;
@@ -1762,10 +1465,6 @@ void MainWindow::on_Accepte_clicked()
                             {
                                 Carte C1 ;
                                 C1=T.getColonne(0).top() ;
-                                Carte::Formes F;
-                                Carte::Valeurs V;
-                                F=C1.getForme() ;
-                                V=C1.getValeur() ;
                                 int J ;
                                 J=T.getColonne(0).size() ;
                                 //ui->colonne1->setText("\n")   ;
@@ -1782,10 +1481,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(1).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(1).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1802,10 +1497,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(2).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(2).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1822,10 +1513,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(3).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(3).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1842,10 +1529,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(4).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(4).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1862,10 +1545,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(5).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(5).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1882,10 +1561,6 @@ void MainWindow::on_Accepte_clicked()
                         {
                             Carte C1 ;
                             C1=T.getColonne(6).top() ;
-                            Carte::Formes F;
-                            Carte::Valeurs V;
-                            F=C1.getForme() ;
-                            V=C1.getValeur() ;
                             int J ;
                             J=T.getColonne(6).size() ;
                             //ui->colonne1->setText("\n")   ;
@@ -1906,41 +1581,25 @@ void MainWindow::on_Accepte_clicked()
                                 {
                                     case 11:
                                     {
-                                        Carte::Formes F;
-                                        Carte::Valeurs V;
-                                        F=PC.getPile(0).top().getForme() ;
-                                        V=PC.getPile(0).top().getValeur() ;
                                         Affiche_cartes(PC.getPile(0).top(),11) ;
                                         //ui->pile11->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                         break ;
                                     }
                                 case 12:
                                 {
-                                    Carte::Formes F;
-                                    Carte::Valeurs V;
-                                    F=PC.getPile(1).top().getForme() ;
-                                    V=PC.getPile(1).top().getValeur() ;
                                     Affiche_cartes(PC.getPile(1).top(),12) ;
                                     //ui->pile12->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                     break ;
                                 }
                                 case 13:
                                 {
-                                    Carte::Formes F;
-                                    Carte::Valeurs V;
-                                    F=PC.getPile(2).top().getForme() ;
-                                    V=PC.getPile(2).top().getValeur() ;
                                     Affiche_cartes(PC.getPile(2).top(),13) ;
                                     //ui->pile13->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                     break ;
                                 }
                                 case 14:
                                 {
-                                    Carte::Formes F;
-                                    Carte::Valeurs V;
-                                    F=PC.getPile(3).top().getForme() ;
-                                    V=PC.getPile(3).top().getValeur() ;
-                                    Affiche_cartes(PC.getPile(3).top(),13) ;
+                                    Affiche_cartes(PC.getPile(3).top(),14) ;
                                     //ui->pile14->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
                                     break ;
                                 }
@@ -1952,6 +1611,12 @@ void MainWindow::on_Accepte_clicked()
             }
 
         }
+ui->NumPile->setText("") ;
+ui->NumDest->setText("") ;
+ui->NbrCarte->setText("") ;
+ui->nump1->setText("") ;
+ui->numd1->setText("") ;
+ui->nbrc1->setText("") ;
 
 }
 
@@ -2029,9 +1694,7 @@ void MainWindow::on_Astuce_clicked()
 void MainWindow::Affiche_cartes(Carte C,int x)
 {
     Carte::Formes F;
-    Carte::Valeurs V;
     F=C.getForme() ;
-    V=C.getValeur() ;
     if(C.estVisible()== false)
     {
         switch (x)
@@ -2389,9 +2052,7 @@ void MainWindow::Affiche_cartes1(Carte C, int x, int i)
     const QPixmap pixmap6 = ui->colonne6->pixmap();
     const QPixmap pixmap7 = ui->colonne7->pixmap();
     Carte::Formes F;
-    Carte::Valeurs V;
     F=C.getForme() ;
-    V=C.getValeur() ;
     if(F==Carte::carreau)
         {
             switch (x)
@@ -2896,7 +2557,7 @@ void MainWindow::Affiche_empty(int x, int i)
 
 }
 
-void MainWindow::on_pushButton_clicked()
+/*void MainWindow::on_pushButton_clicked()
 {
     Carte C(Carte::carreau,Carte::deux,Carte::V) ;
     Carte C1(Carte::carreau,Carte::As,Carte::V) ;
@@ -2907,5 +2568,5 @@ void MainWindow::on_pushButton_clicked()
     Affiche_cartes1(C1,1,2) ;
 
 
-}
+}*/
 

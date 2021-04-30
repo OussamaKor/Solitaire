@@ -178,7 +178,7 @@ stack<int> Tableau::Rech_Sol(int k){
                 b=true ;
                 //cout<<"On peut faire un deplacement de"<<f<<"Carte de la colonne "<<k+1<<"vers la colonne "<<w+1<<endl ;
             }
-            else if (tableau[w].top().getValeur() == d && tableau[w].top().estRouge() != S1.top().estRouge())
+            else if (tableau[w].top().getValeur() == d && tableau[w].top().estRouge() != S1.top().estRouge() && S1.empty() == false)
             {
                 int f ;
                 f=S1.size() ;
