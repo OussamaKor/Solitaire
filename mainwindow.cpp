@@ -12,11 +12,38 @@
 #include <QDebug>
 #include <QPixmap>
 #include <QPainter>
+#include <QMessageBox>
 using namespace std  ;
 
 MainWindow::MainWindow(QWidget *parent,stack<Carte> S,stack<Carte> S1): QMainWindow(parent=nullptr), ui (new Ui::MainWindow),T(S1),P(S)
 {
     ui->setupUi(this);
+    QString cs1="QPushButton {"
+                                   " border: 3px solid gray;"
+                                    "border-radius: 10px;"
+                                    "padding: 0 8px;"
+                                   " background: solid #efc25d;"
+                                   " selection-background-color: darkgray;"
+                         "}"
+                         "QPushButton:hover {"
+                              "border: 3px solid black;"
+                         "}";
+            ui->Commencer->setStyleSheet(cs1);
+            ui->pioche->setStyleSheet(cs1);
+            ui->Accepte->setStyleSheet(cs1);
+            ui->Astuce->setStyleSheet(cs1);
+            ui->pushButton_5->setStyleSheet(cs1);
+            ui->pushButton_6->setStyleSheet(cs1);
+            /*QString cs2="QLabel {"
+                                           " border: 3px solid gray;"
+                                            "border-radius: 10px;"
+                                            "padding: 0 8px;"
+                                           " background: solid #efc25d;"
+                                           " selection-background-color: darkgray;"
+                                 "}" ;
+            ui->colonne1->setStyleSheet(cs2) ;*/
+
+
     //Ch = ui->longuer->toPlainText() ;
     //Ch1 = ui->largeur->toPlainTaxt() ;
     //ui->colonne1->setText(ui->colonne1->text()+ "")
@@ -142,6 +169,10 @@ void MainWindow::on_Accepte_clicked()
       int nump=Ch1.toInt() ;
       int numd=Ch2.toInt() ;
       int nbrc=Ch3.toInt() ;
+      if(T.getColonne(nump-1).empty() == false)
+      {
+      if (nump>0 && nump<8 && numd>0 && numd<8 && nbrc>0 )
+      {
       bool t3=false ;
           bool t4=false ;
       stack<Carte> S2,S3,S4,S5 ;
@@ -402,6 +433,18 @@ void MainWindow::on_Accepte_clicked()
           }
 
         }
+        else
+        {
+           //ui->message->setText("Cette colonne ne peut accepter qu'un roi ") ;
+            QMessageBox m_MsgBox;
+                m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                m_MsgBox.setIcon(QMessageBox::Warning);
+                m_MsgBox.setText("Cette Colonne ne peut accepter qu'un roi");
+                m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                if(m_MsgBox.exec() == QMessageBox::Ok)
+                    m_MsgBox.close();
+        }
       }
       else
       {
@@ -643,11 +686,49 @@ void MainWindow::on_Accepte_clicked()
 
           }
       }
+      else
+      {
+            QMessageBox m_MsgBox;
+                m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                m_MsgBox.setIcon(QMessageBox::Warning);
+                m_MsgBox.setText("Verifier votre choix");
+                m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                if(m_MsgBox.exec() == QMessageBox::Ok)
+                    m_MsgBox.close();
+
+      }
 
 
     }
+    }
+      else
+      {
+          QMessageBox m_MsgBox;
+              m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+              m_MsgBox.setIcon(QMessageBox::Warning);
+              m_MsgBox.setText("On a que 7 colonnes Verifier votre choix");
+              m_MsgBox.setStandardButtons(QMessageBox::Ok);
+              m_MsgBox.setStyleSheet("QLabel{min-width:300 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+              if(m_MsgBox.exec() == QMessageBox::Ok)
+                  m_MsgBox.close();
+      }
+      }
+      else
+      {
+          QMessageBox m_MsgBox;
+              m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+              m_MsgBox.setIcon(QMessageBox::Warning);
+              m_MsgBox.setText("Cette Colonne est vide ");
+              m_MsgBox.setStandardButtons(QMessageBox::Ok);
+              m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+              if(m_MsgBox.exec() == QMessageBox::Ok)
+                  m_MsgBox.close();
+
+      }
 
 }
+
 
         else if (Ch1 == "" && Ch2 != "" && Ch3=="")
         {
@@ -720,6 +801,17 @@ void MainWindow::on_Accepte_clicked()
                                             ui->pioch->setPixmap(QPixmap(":/images/empty.gif")) ;
 
                                         }
+                                        else
+                                        {
+                                            QMessageBox m_MsgBox;
+                                                m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                                                m_MsgBox.setIcon(QMessageBox::Warning);
+                                                m_MsgBox.setText("Cette Colonne ne peut accepter qu'un roi");
+                                                m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                                                m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                                                if(m_MsgBox.exec() == QMessageBox::Ok)
+                                                    m_MsgBox.close();
+                                        }
                                       }
                                       else if (t1 == false)
                                       {
@@ -784,9 +876,18 @@ void MainWindow::on_Accepte_clicked()
                                             ui->pioch->setPixmap(QPixmap(":/images/empty.gif")) ;
 
                                         }
+                                        else
+                                        {
+                                            QMessageBox m_MsgBox;
+                                                m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                                                m_MsgBox.setIcon(QMessageBox::Warning);
+                                                m_MsgBox.setText("Verifier votre choix");
+                                                m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                                                m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                                                if(m_MsgBox.exec() == QMessageBox::Ok)
+                                                    m_MsgBox.close();
+                                        }
                                       }
-                                      else if (t1== false && t2 == false)
-                                      {}
             }
             if (numd==11 || numd==12 || numd==13 || numd==14)
             {
@@ -827,6 +928,17 @@ void MainWindow::on_Accepte_clicked()
                                P.sup_Carte();
                                ui->pioch->setPixmap(QPixmap(":/images/empty.gif"));
                             }
+                            else
+                            {
+                                QMessageBox m_MsgBox;
+                                    m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                                    m_MsgBox.setIcon(QMessageBox::Warning);
+                                    m_MsgBox.setText("Cette Colonne ne peut accepter qu'un As");
+                                    m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                                    m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                                    if(m_MsgBox.exec() == QMessageBox::Ok)
+                                        m_MsgBox.close();
+                            }
                           }
                           else if (t1 == false)
                           {
@@ -863,8 +975,18 @@ void MainWindow::on_Accepte_clicked()
                                P.sup_Carte();
                                ui->pioch->setPixmap(QPixmap(":/images/empty.gif"));
                             }
+                            else
+                            {
+                                QMessageBox m_MsgBox;
+                                    m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                                    m_MsgBox.setIcon(QMessageBox::Warning);
+                                    m_MsgBox.setText("Vérifier votre choix");
+                                    m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                                    m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                                    if(m_MsgBox.exec() == QMessageBox::Ok)
+                                        m_MsgBox.close();
+                            }
                           }
-                          else if (t1== false && t2 == false){}
 
             }
         }
@@ -873,7 +995,7 @@ void MainWindow::on_Accepte_clicked()
             qDebug()<<"hi3" ;
             int nump=Ch1.toInt() ;
             int numd=Ch2.toInt() ;
-            if (nump<=7 && (numd==11 || numd==12 || numd==13 || numd==14 ))
+            if ((nump<=7 && (numd==11 || numd==12 || numd==13 || numd==14 )) && (T.getColonne(nump-1).empty()==false))
             {
                 //cout<<"choisir une pile couleur comme destination "<<endl;
                                Carte CP ;
@@ -1086,6 +1208,17 @@ void MainWindow::on_Accepte_clicked()
 
 
                                       }
+                                     else
+                                     {
+                                         QMessageBox m_MsgBox;
+                                             m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                                             m_MsgBox.setIcon(QMessageBox::Warning);
+                                             m_MsgBox.setText("Cette Colonne ne peut accepter qu'un As");
+                                             m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                                             m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                                             if(m_MsgBox.exec() == QMessageBox::Ok)
+                                                 m_MsgBox.close();
+                                     }
                               }
                                else
                                {
@@ -1292,10 +1425,22 @@ void MainWindow::on_Accepte_clicked()
                                           }
 
                                        }
+                                       else
+                                       {
+                                            QMessageBox m_MsgBox;
+                                                m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                                                m_MsgBox.setIcon(QMessageBox::Warning);
+                                                m_MsgBox.setText("Vérifier votre choix");
+                                                m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                                                m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                                                if(m_MsgBox.exec() == QMessageBox::Ok)
+                                                    m_MsgBox.close();
+
+                                       }
 
                                }
             }
-            if (numd<=7 && (nump==11 || nump==12 || nump==13 || nump==14 ))
+            else if ((numd<=7 && (nump==11 || nump==12 || nump==13 || nump==14 )) && PC.getPile(nump-11).empty() ==false)
             {
                   Carte CP1 ;
                   bool t2=false ;
@@ -1305,7 +1450,172 @@ void MainWindow::on_Accepte_clicked()
                     t2=T.AccepterRoi(CP1, numd-1) ;
                     if(t2)
                     {
-                        switch (nump)
+                        stack<Carte> S8,S9 ;
+                        S9 =T.getColonne(numd-1) ;
+                        while(S9.size()!= 0)
+                        {
+                            S8.push(S9.top()) ;
+                            S9.pop() ;
+                        }
+
+                        switch (numd)
+                        {
+                        case 1:
+                            {
+                                int Z=S8.size() ;
+                                for(int i=0 ;i<Z ; i++)
+                                {
+                                    if(S8.top().estVisible()==false)
+                                    {
+                                        Affiche_empty(1,i+1) ;
+                                    }
+                                    else
+                                    {
+                                        Affiche_cartes1(S8.top(),1,i+1) ;
+
+                                    }
+                                    S8.pop() ;
+                                }
+                                if(T.getColonne(0).size()==0)
+                                {
+                                    ui->colonne1->setText("empty") ;
+                                }
+                                break ;
+                            }
+                    case 2:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(2,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),2,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(1).size()==0)
+                            {
+                                ui->colonne2->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 3:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(3,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),3,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(2).size()==0)
+                            {
+                                ui->colonne3->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 4:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(4,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),4,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(3).size()==0)
+                            {
+                                ui->colonne4->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 5:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(5,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),5,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(4).size()==0)
+                            {
+                                ui->colonne5->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 6:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(6,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),6,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(5).size()==0)
+                            {
+                                ui->colonne6->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 7:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(7,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),7,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(6).size()==0)
+                            {
+                                ui->colonne7->setText("empty") ;
+                            }
+                            break ;
+                      }
+                        }
+                        /*switch (numd)
                         {
                         case 1:
                             {
@@ -1419,11 +1729,11 @@ void MainWindow::on_Accepte_clicked()
                             //ui->colonne7->setText(ui->colonne1->text()+'('+QString::number(V)+','+QString::number(F) + ')') ;
                             break ;
                         }
-                      }
+                      }*/
 
                         PC.Supp_Carte(nump-11);
 
-                        switch (numd)
+                        switch (nump)
                             {
                                 case 11:
                                 {
@@ -1453,13 +1763,189 @@ void MainWindow::on_Accepte_clicked()
 
 
                     }
+                    else
+                    {
+                        QMessageBox m_MsgBox;
+                            m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                            m_MsgBox.setIcon(QMessageBox::Warning);
+                            m_MsgBox.setText("Cette Colonne ne peut accepter qu'un roi");
+                            m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                            m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                            if(m_MsgBox.exec() == QMessageBox::Ok)
+                                m_MsgBox.close();
+                    }
                   }
                   else
                   {
                     t2=T.Alternance(CP1, numd-1) ;
                     if (t2)
                     {
-                        switch (nump)
+                        stack<Carte> S8,S9 ;
+                        S9 =T.getColonne(numd-1) ;
+                        while(S9.size()!= 0)
+                        {
+                            S8.push(S9.top()) ;
+                            S9.pop() ;
+                        }
+
+                        switch (numd)
+                        {
+                        case 1:
+                            {
+                                int Z=S8.size() ;
+                                for(int i=0 ;i<Z ; i++)
+                                {
+                                    if(S8.top().estVisible()==false)
+                                    {
+                                        Affiche_empty(1,i+1) ;
+                                    }
+                                    else
+                                    {
+                                        Affiche_cartes1(S8.top(),1,i+1) ;
+
+                                    }
+                                    S8.pop() ;
+                                }
+                                if(T.getColonne(0).size()==0)
+                                {
+                                    ui->colonne1->setText("empty") ;
+                                }
+                                break ;
+                            }
+                    case 2:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(2,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),2,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(1).size()==0)
+                            {
+                                ui->colonne2->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 3:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(3,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),3,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(2).size()==0)
+                            {
+                                ui->colonne3->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 4:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(4,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),4,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(3).size()==0)
+                            {
+                                ui->colonne4->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 5:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(5,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),5,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(4).size()==0)
+                            {
+                                ui->colonne5->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 6:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(6,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),6,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(5).size()==0)
+                            {
+                                ui->colonne6->setText("empty") ;
+                            }
+                            break ;
+                        }
+                    case 7:
+                        {
+                            int Z=S8.size() ;
+                            for(int i=0 ;i<Z ; i++)
+                            {
+                                if(S8.top().estVisible()==false)
+                                {
+                                    Affiche_empty(7,i+1) ;
+                                }
+                                else
+                                {
+                                    Affiche_cartes1(S8.top(),7,i+1) ;
+
+                                }
+                                S8.pop() ;
+                            }
+                            if(T.getColonne(6).size()==0)
+                            {
+                                ui->colonne7->setText("empty") ;
+                            }
+                            break ;
+                        }
+                      }
+                        /*switch (numd)
                         {
                         case 1:
                             {
@@ -1573,50 +2059,161 @@ void MainWindow::on_Accepte_clicked()
                             //ui->colonne7->setText(ui->colonne1->text()+'('+QString::number(V)+','+QString::number(F) + ')') ;
                             break ;
                         }
-                      }
+                      }*/
 
                             PC.Supp_Carte(nump-11) ;
-
-                            switch (numd)
-                                {
-                                    case 11:
+                            if(PC.getPile(nump-11).empty()==true)
+                            {
+                                switch (nump)
                                     {
-                                        Affiche_cartes(PC.getPile(0).top(),11) ;
-                                        //ui->pile11->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
+                                        case 11:
+                                        {
+
+                                            ui->pile11->setText("Empty") ;
+                                            break ;
+                                        }
+                                    case 12:
+                                    {
+                                        ui->pile12->setText("Empty") ;
                                         break ;
                                     }
-                                case 12:
-                                {
-                                    Affiche_cartes(PC.getPile(1).top(),12) ;
-                                    //ui->pile12->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
-                                    break ;
+                                    case 13:
+                                    {
+                                        ui->pile13->setText("Empty") ;
+                                        break ;
+                                    }
+                                    case 14:
+                                    {
+                                        ui->pile14->setText("Empty") ;
+                                        break ;
+                                    }
                                 }
-                                case 13:
-                                {
-                                    Affiche_cartes(PC.getPile(2).top(),13) ;
-                                    //ui->pile13->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
-                                    break ;
-                                }
-                                case 14:
-                                {
-                                    Affiche_cartes(PC.getPile(3).top(),14) ;
-                                    //ui->pile14->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
-                                    break ;
-                                }
+
                             }
+                            else
+                            {
+
+                                switch (nump)
+                                    {
+                                        case 11:
+                                        {
+                                            Affiche_cartes(PC.getPile(0).top(),11) ;
+                                            //ui->pile11->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
+                                            break ;
+                                        }
+                                    case 12:
+                                    {
+                                        Affiche_cartes(PC.getPile(1).top(),12) ;
+                                        //ui->pile12->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
+                                        break ;
+                                    }
+                                    case 13:
+                                    {
+                                        Affiche_cartes(PC.getPile(2).top(),13) ;
+                                        //ui->pile13->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
+                                        break ;
+                                    }
+                                    case 14:
+                                    {
+                                        Affiche_cartes(PC.getPile(3).top(),14) ;
+                                        //ui->pile14->setText("("+QString::number(V)+','+QString::number(F) + ')') ;
+                                        break ;
+                                    }
+                                }
+                         }
+                    }
+                    else
+                    {
+                        QMessageBox m_MsgBox;
+                            m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                            m_MsgBox.setIcon(QMessageBox::Warning);
+                            m_MsgBox.setText("Cette Colonne ne peut accepter qu'un roi");
+                            m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                            m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                            if(m_MsgBox.exec() == QMessageBox::Ok)
+                                m_MsgBox.close();
                     }
 
                   }
 
             }
-
+            else
+            {
+                QMessageBox m_MsgBox;
+                    m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                    m_MsgBox.setIcon(QMessageBox::Warning);
+                    m_MsgBox.setText("La Colonne ou la pile à dépiler est vide");
+                    m_MsgBox.setStandardButtons(QMessageBox::Ok);
+                    m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+                    if(m_MsgBox.exec() == QMessageBox::Ok)
+                        m_MsgBox.close();
+            }
         }
+    QString cs2="QLabel {"
+                                        "background: solid #012233 ;"
+                                        "border:3px  solid red ; "
+                                     "}" ;
+    QString cs1="QLabel {"
+                                            "background: solid #012233 ;"
+                                            "border:1px  solid #efc25d ;"
+                                     "}" ;
+    if (ui->colonne1->styleSheet()== cs2)
+    {
+        ui->colonne1->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne2->styleSheet()== cs2)
+    {
+        ui->colonne2->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne3->styleSheet()== cs2)
+    {
+        ui->colonne3->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne4->styleSheet()== cs2)
+    {
+        ui->colonne4->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne5->styleSheet()== cs2)
+    {
+        ui->colonne5->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne6->styleSheet()== cs2)
+    {
+        ui->colonne6->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne7->styleSheet()== cs2)
+    {
+        ui->colonne7->setStyleSheet(cs1) ;
+    }
+    if (ui->pioch->styleSheet()== cs2)
+    {
+        ui->pioch->setStyleSheet(cs1) ;
+    }
+
 ui->NumPile->setText("") ;
 ui->NumDest->setText("") ;
 ui->NbrCarte->setText("") ;
 ui->nump1->setText("") ;
 ui->numd1->setText("") ;
 ui->nbrc1->setText("") ;
+if (PC.sizePile(0)==13 && PC.sizePile(1)==13 && PC.sizePile(2)==13 && PC.sizePile(3)==13 )
+{
+    ui->Accepte->setDisabled(true);
+    ui->Astuce->setDisabled(true);
+    ui->pioche->setDisabled(true);
+    QMessageBox m_MsgBox;
+        m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        m_MsgBox.setIcon(QMessageBox::Warning);
+        m_MsgBox.setText("Bravo !! ");
+        m_MsgBox.setStandardButtons(QMessageBox::Ok);
+        m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
+        if(m_MsgBox.exec() == QMessageBox::Ok)
+            m_MsgBox.close();
+}
+if(P.getPioche().empty()== true)
+{
+    ui->pioch->setText("Empty") ;
+}
 
 }
 
@@ -1670,18 +2267,147 @@ void MainWindow::on_Astuce_clicked()
 
       }
     }
+    QString cs2="QLabel {"
+                                        "background: solid #012233 ;"
+                                        "border:3px  solid red ; "
+                                     "}" ;
 
     if (S1.size()== 3)
     {
+        int x ;
+        x=S1.top() ;
         ui->numd1->setText(QString::number(S1.top())) ;
+
+        switch (x)
+        {
+            case 1 :
+            {
+               ui->colonne1->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 7 :
+            {
+               ui->colonne7->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 2 :
+            {
+               ui->colonne2->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 3 :
+            {
+               ui->colonne3->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 4 :
+            {
+               ui->colonne4->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 5 :
+            {
+               ui->colonne5->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 6 :
+            {
+               ui->colonne6->setStyleSheet(cs2) ;
+               break ;
+            }
+
+        }
         S1.pop() ;
         ui->nump1->setText(QString::number(S1.top())) ;
+        x=S1.top() ;
+        switch (x)
+        {
+            case 1 :
+            {
+               ui->colonne1->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 7 :
+            {
+               ui->colonne7->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 2 :
+            {
+               ui->colonne2->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 3 :
+            {
+               ui->colonne3->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 4 :
+            {
+               ui->colonne4->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 5 :
+            {
+               ui->colonne5->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 6 :
+            {
+               ui->colonne6->setStyleSheet(cs2) ;
+               break ;
+            }
+
+        }
+
         S1.pop() ;
         ui->nbrc1->setText(QString::number(S1.top())) ;
     }
     else if (S1.size()==1)
     {
         ui->numd1->setText(QString::number(S1.top())) ;
+        ui->pioch->setStyleSheet(cs2) ;
+        switch (S1.top())
+        {
+            case 1 :
+            {
+               ui->colonne1->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 7 :
+            {
+               ui->colonne7->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 2 :
+            {
+               ui->colonne2->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 3 :
+            {
+               ui->colonne3->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 4 :
+            {
+               ui->colonne4->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 5 :
+            {
+               ui->colonne5->setStyleSheet(cs2) ;
+               break ;
+            }
+            case 6 :
+            {
+               ui->colonne6->setStyleSheet(cs2) ;
+               break ;
+            }
+
+        }
+
+
     }
     else
     {

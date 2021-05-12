@@ -161,9 +161,9 @@ stack<int> Tableau::Rech_Sol(int k){
     int w=0 ;
     bool b=false;
 
-    while(w<7 && b == false)
+    while(w<7 && b == false && S1.empty()==false)
     {
-        if(w != k && S1.empty()==false )
+        if(w != k )
         {
             int q =S1.top().getValeur()+1 ;
             Carte::Valeurs d ;
@@ -178,7 +178,7 @@ stack<int> Tableau::Rech_Sol(int k){
                 b=true ;
                 //cout<<"On peut faire un deplacement de"<<f<<"Carte de la colonne "<<k+1<<"vers la colonne "<<w+1<<endl ;
             }
-            else if (tableau[w].top().getValeur() == d && tableau[w].top().estRouge() != S1.top().estRouge() && S1.empty() == false)
+            else if (tableau[w].top().getValeur() == d && tableau[w].top().estRouge() != S1.top().estRouge() )
             {
                 int f ;
                 f=S1.size() ;

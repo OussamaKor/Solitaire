@@ -80,6 +80,9 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">border: 3px solid gray;
     border-radius: 10px;
@@ -382,23 +385,6 @@ border:1px  solid #efc25d ; </string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="message">
-    <property name="geometry">
-     <rect>
-      <x>1000</x>
-      <y>40</y>
-      <width>181</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background: black ;
-border:1px  solid #efc25d ; </string>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Commencer">
     <property name="geometry">
      <rect>
@@ -484,8 +470,8 @@ border:1px  solid #efc25d ; </string>
      <rect>
       <x>30</x>
       <y>20</y>
-      <width>73</width>
-      <height>96</height>
+      <width>78</width>
+      <height>102</height>
      </rect>
     </property>
     <property name="styleSheet">
