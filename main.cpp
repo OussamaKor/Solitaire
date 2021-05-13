@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
         }
     QApplication a(argc, argv);
     MainWindow w(nullptr,S1,S);
+    w.setWindowIcon(QIcon(":/images/3850.ico")) ;
     w.show();
     return a.exec();
 }

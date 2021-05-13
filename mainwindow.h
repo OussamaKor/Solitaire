@@ -36,7 +36,7 @@ private slots:
     void Affiche_cartes1(Carte ,int,int) ;
     void Affiche_empty(int,int) ;
 
-    void on_pushButton_clicked();
+    //void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

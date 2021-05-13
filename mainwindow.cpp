@@ -18,6 +18,7 @@ using namespace std  ;
 MainWindow::MainWindow(QWidget *parent,stack<Carte> S,stack<Carte> S1): QMainWindow(parent=nullptr), ui (new Ui::MainWindow),T(S1),P(S)
 {
     ui->setupUi(this);
+    setWindowTitle("Solitaire") ;
     QString cs1="QPushButton {"
                                    " border: 3px solid gray;"
                                     "border-radius: 10px;"
@@ -169,7 +170,7 @@ void MainWindow::on_Accepte_clicked()
       int nump=Ch1.toInt() ;
       int numd=Ch2.toInt() ;
       int nbrc=Ch3.toInt() ;
-      if(T.getColonne(nump-1).empty() == false)
+      if((nump>0 && nump<8 && numd>0 && numd<8 && nbrc>0) && (T.getColonne(nump-1).empty() == false))
       {
       if (nump>0 && nump<8 && numd>0 && numd<8 && nbrc>0 )
       {
@@ -719,7 +720,7 @@ void MainWindow::on_Accepte_clicked()
           QMessageBox m_MsgBox;
               m_MsgBox.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
               m_MsgBox.setIcon(QMessageBox::Warning);
-              m_MsgBox.setText("Cette Colonne est vide ");
+              m_MsgBox.setText(" Vérifier votre choix ");
               m_MsgBox.setStandardButtons(QMessageBox::Ok);
               m_MsgBox.setStyleSheet("QLabel{min-width:250 px; font-size: 13px; } QPushButton{ width:25px; font-size: 13px; }");
               if(m_MsgBox.exec() == QMessageBox::Ok)
