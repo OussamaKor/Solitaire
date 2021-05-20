@@ -79,7 +79,6 @@ bool Tableau::AccepterRoi (Carte C,int k)
         }
 
     }
-    else
     return false ;
 }
 void Tableau::popCarte(int k){

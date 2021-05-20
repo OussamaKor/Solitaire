@@ -15,7 +15,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     pilecouleur.cpp \
-    pioche.cpp
+    pioche.cpp \
+    regles.cpp
 
 HEADERS += \
     Tableau.h \
@@ -23,10 +24,12 @@ HEADERS += \
     game.h \
     mainwindow.h \
     pilecouleur.h \
-    pioche.h
+    pioche.h \
+    regles.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    regles.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

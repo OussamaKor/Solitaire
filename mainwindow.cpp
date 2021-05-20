@@ -17,24 +17,33 @@ using namespace std  ;
 
 MainWindow::MainWindow(QWidget *parent,stack<Carte> S,stack<Carte> S1): QMainWindow(parent=nullptr), ui (new Ui::MainWindow),T(S1),P(S)
 {
-    ui->setupUi(this);
-    setWindowTitle("Solitaire") ;
-    QString cs1="QPushButton {"
-                                   " border: 3px solid gray;"
-                                    "border-radius: 10px;"
-                                    "padding: 0 8px;"
-                                   " background: solid #efc25d;"
-                                   " selection-background-color: darkgray;"
-                         "}"
-                         "QPushButton:hover {"
-                              "border: 3px solid black;"
-                         "}";
+        ui->setupUi(this);
+        setWindowTitle("Solitaire") ;
+        QString cs1="QPushButton {"
+                                       " border: 3px solid gray;"
+                                        "border-radius: 10px;"
+                                        "padding: 0 8px;"
+                                       " background: solid #efc25d;"
+                                       " selection-background-color: darkgray;"
+                             "}"
+                             "QPushButton:hover {"
+                                  "border: 3px solid black;"
+                             "}";
             ui->Commencer->setStyleSheet(cs1);
             ui->pioche->setStyleSheet(cs1);
             ui->Accepte->setStyleSheet(cs1);
             ui->Astuce->setStyleSheet(cs1);
             ui->pushButton_5->setStyleSheet(cs1);
             ui->pushButton_6->setStyleSheet(cs1);
+            setFixedSize(1207,747);
+            ui->Accepte->setDisabled(true);
+            ui->pioche->setDisabled(true);
+            ui->Astuce->setDisabled(true);
+
+
+
+
+
             /*QString cs2="QLabel {"
                                            " border: 3px solid gray;"
                                             "border-radius: 10px;"
@@ -126,6 +135,15 @@ void MainWindow::on_Commencer_clicked()
       Affiche_cartes1(C7,7,7) ;
       //ui->colonne7->setText("\n \n \n \n \n \n ( "+QString::number(V)+','+QString::number(F) + ')') ;
       ui->Commencer->setDisabled(true);
+      ui->Accepte->setDisabled(false);
+      ui->Astuce->setDisabled(false);
+      ui->pioche->setDisabled(false);
+
+
+
+
+
+
 }
 
 void MainWindow::on_pioche_clicked()
@@ -154,6 +172,46 @@ void MainWindow::on_pioche_clicked()
         Affiche_cartes(C1,0) ;
         //ui->pioche->setText('('+QString::number(V)+','+QString::number(F) + ')') ;
 
+    }
+    QString cs2="QLabel {"
+                                        "background: solid #012233 ;"
+                                        "border:3px  solid red ; "
+                                     "}" ;
+    QString cs1="QLabel {"
+                                            "background: solid #012233 ;"
+                                            "border:1px  solid #efc25d ;"
+                                     "}" ;
+    if (ui->pioch->styleSheet()== cs2)
+    {
+        ui->pioch->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne1->styleSheet()== cs2)
+    {
+        ui->colonne1->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne2->styleSheet()== cs2)
+    {
+        ui->colonne2->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne3->styleSheet()== cs2)
+    {
+        ui->colonne3->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne4->styleSheet()== cs2)
+    {
+        ui->colonne4->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne5->styleSheet()== cs2)
+    {
+        ui->colonne5->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne6->styleSheet()== cs2)
+    {
+        ui->colonne6->setStyleSheet(cs1) ;
+    }
+    if (ui->colonne7->styleSheet()== cs2)
+    {
+        ui->colonne7->setStyleSheet(cs1) ;
     }
 }
 
@@ -735,11 +793,11 @@ void MainWindow::on_Accepte_clicked()
         {
             qDebug()<<"hi1" ;
             int numd=Ch2.toInt() ;
-            if(numd<=7)
+            if(numd<=7 && numd>0 )
             {
-                bool t1=false ;
+                                      bool t1=false ;
                                       bool t2=false ;
-                                      if(T.getColonne(numd-1).empty())
+                                      if(T.getColonne(numd-1).empty() == true)
                                       {
                                         t1=T.AccepterRoi(P.getPioche().top(), numd-1) ;
                                         if(t1 == true)
@@ -890,7 +948,7 @@ void MainWindow::on_Accepte_clicked()
                                         }
                                       }
             }
-            if (numd==11 || numd==12 || numd==13 || numd==14)
+            else if (numd==11 || numd==12 || numd==13 || numd==14)
             {
                           bool t1=false ;
                           bool t2=false ;
@@ -3172,8 +3230,6 @@ void MainWindow::Affiche_cartes1(Carte C, int x, int i)
 
             }
          }
-
-
 }
 
 void MainWindow::Affiche_empty(int x, int i)
@@ -3275,13 +3331,9 @@ void MainWindow::Affiche_empty(int x, int i)
            painter->drawPixmap(0, 15*i, 71, 96, QPixmap(":/images/empty.gif"));
            painter->end();
            ui->colonne7->setPixmap(*pixmap) ;
-
            break ;
         }
-
     }
-
-
 }
 
 /*void MainWindow::on_pushButton_clicked()
@@ -3297,3 +3349,10 @@ void MainWindow::Affiche_empty(int x, int i)
 
 }*/
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    Regles regles ;
+    regles.setModal(true) ;
+    regles.exec() ;
+}

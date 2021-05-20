@@ -9,7 +9,7 @@
 #include <stack>
 #include <stdlib.h>
 #include <QMainWindow>
-
+#include "regles.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -38,10 +38,13 @@ private slots:
 
     //void on_pushButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Tableau T;
     Pioche P ;
     PileCouleur PC;
+    Regles* Jregles ;
 };
 #endif // MAINWINDOW_H

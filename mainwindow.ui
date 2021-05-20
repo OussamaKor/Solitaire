@@ -205,7 +205,7 @@ border:1px  solid #efc25d ; </string>
    <widget class="QLabel" name="colonne1">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>260</x>
       <y>180</y>
       <width>91</width>
       <height>271</height>
@@ -422,7 +422,7 @@ border:1px  solid #efc25d ; </string>
     selection-background-color: darkgray;</string>
     </property>
     <property name="text">
-     <string>Redemarer</string>
+     <string>Redemarrer</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_6">
@@ -442,7 +442,7 @@ border:1px  solid #efc25d ; </string>
     selection-background-color: darkgray;</string>
     </property>
     <property name="text">
-     <string>Quiter</string>
+     <string>Quitter</string>
     </property>
    </widget>
    <widget class="QLabel" name="colonne5">
@@ -485,6 +485,26 @@ border:1px  solid #efc25d ; </string>
      <set>Qt::AlignHCenter|Qt::AlignTop</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>590</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: solid #efc25d;
+    selection-background-color: darkgray;</string>
+    </property>
+    <property name="text">
+     <string>Rules</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -496,7 +516,6 @@ border:1px  solid #efc25d ; </string>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections>
